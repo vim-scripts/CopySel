@@ -28,6 +28,8 @@
 "   Sometimes missed the very first selection
 "   Space after :com resultng in E488
 "   Parameter to switch with/without VDLGBX
+" Vers 1.2 2014-02-26_16:47:27
+"   Misplaced assignment when using no DLL
 
 
 function! CopySel(qDLL)
@@ -53,15 +55,20 @@ if(a:qDLL)
     call confirm('Register must be a small letter','','','E')
     return
   endif
+  " exec 'let @'.VDLGBX_vReg.'="v//e+1y//spp€kh€kDop"' 
   exec 'let @'.VDLGBX_vReg.'="v//e+1y//spp€kh€kDop"' 
+  let  selArg=VDLGBX_vSEL
 else
+  "exec 'let @q="v//e+1y//spp€kh€kDop"' 
+  "exec 'let @q="v//e+1y//spp€kh€kD€kdddp"' 
   exec 'let @q="v//e+1y//spp€kh€kDop"' 
+  let selArg=@/
 endif
-let  @/=VDLGBX_vSEL
+let  @/=selArg
 exec "normal s"
 :only
 :new
-exec "normal p"
+exec "normal pgg€kh"
 "exec 'normal 0gon'
 exec 'normal  €ýXn'
 endfun
